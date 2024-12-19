@@ -15,7 +15,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ Statamic::cpViteAsset('img/favicon.ico') }}" sizes="16x16 32x32"/>
 @endif
 
-<script>
+<script {!! csp_nonce_attribute() !!}>
     (function () {
         let theme = {!! ($userTheme = $user?->preferredTheme()) ? "'".$userTheme."'" : "null" !!};
         if (! theme) theme = localStorage.getItem('statamic.theme') ?? 'auto';

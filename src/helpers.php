@@ -20,3 +20,13 @@ if (! function_exists('debugbar')) {
         return app()->bound(LaravelDebugbar::class) ? app(LaravelDebugbar::class) : optional();
     }
 }
+
+if (! function_exists('csp_nonce_attribute')) {
+    function csp_nonce_attribute(): string {
+        if ($nonce = app('csp-nonce')) {
+            return ' nonce="'.$nonce.'"';
+        }
+
+        return '';
+    }
+}
